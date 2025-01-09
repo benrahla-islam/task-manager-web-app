@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generate HTML Block</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+    }
+    #output {
+      margin-top: 20px;
+    }
+    .html-block {
+      border: 1px solid #ccc;
+      padding: 15px;
+      margin: 10px auto;
+      width: 80%;
+      background-color: #f9f9f9;
+      text-align: left;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sign up</h1>
+  <form action="{{ url_for('signup') }}" method="post" autocomplete="off">
+    {{ form.hidden_tag() }}
+    <p>entrer your email</p>
+    {{ form.email() }}<br>
+    <p>Enter your full name</p>
+    {{ form.name() }}
+    <p>Enter your password (be careful and remember it)</p>
+    {{ form.password() }} <br>
+    <p>{{ form.terms() }} i accept the <a href="{{ url_for('terms_of_service') }}">terms of service</a></p> <br>
+    {{ form.login() }}
+
+  </form>
+
+</body>
+</html>

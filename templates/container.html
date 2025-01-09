@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <title>task manager</title>
+
+
+<style>
+    /* Styling the square */
+    .square {
+      width: 200px;
+      height: 200px;
+      background-color: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border: 2px solid #333;
+      border-radius: 8px;
+      margin: 20px auto;
+    }
+
+    /* Styling the buttons */
+    .square button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #007BFF;
+      color: white;
+    }
+
+    .square button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+
+<body>
+{% block content %}
+
+    <h5> default content block's content</h5>
+
+{% endblock %}
+</body>
+
+</html>

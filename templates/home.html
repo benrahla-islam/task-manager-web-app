@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>today's tasks</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 50px;
+      background-color: #F3E5F5; /* Background color of the page */
+    }
+    #output {
+      margin-top: 20px;
+    }
+    .html-block {
+      padding: 15px;
+      margin: 10px auto;
+      width: 45%; /* Narrowed width */
+      background-color: #F3E5F5; /* Same as the background color */
+      text-align: left;
+      border-radius: 15px; /* Rounded corners */
+      transition: box-shadow 0.3s ease; /* Smooth transition for hover effect */
+      text-align: center; /* Center the text */
+    }
+    .html-block:hover {
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3); /* Shadow effect on hover */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Generate an HTML Block on Click</h1>
+  <button onclick="generateHTMLBlock()">+</button>
+  <div id="output"></div>
+
+  <script>
+    function generateHTMLBlock() {
+      const outputDiv = document.getElementById('output');
+      const htmlBlock = `
+        <div class="html-block">
+          <h2>Generated HTML Block</h2>
+          <p>This is a dynamically generated block of HTML content with rounded corners, no border, and a hover effect.</p>
+        </div>
+      `;
+      outputDiv.innerHTML += htmlBlock; // Append the HTML block
+    }
+  </script>
+</body>
+</html>
