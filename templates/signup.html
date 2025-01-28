@@ -34,6 +34,16 @@
     button:hover {
       background-color: #0056b3;
     }
+    .success {
+        color: green;
+    }
+    .error {
+        color: red;
+    }
+    .info {
+        color: blue;
+    }
+
   </style>
 </head>
 <body>
@@ -47,7 +57,18 @@
     <p>Enter your password (be careful and remember it)</p>
     {{ form.password() }} <br>
     <p>{{ form.terms() }} i accept the <a href="{{ url_for('terms_of_service') }}">terms of service</a></p> <br>
-    {{ form.login() }}
+    {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+            <ul>
+                {% for category, message in messages %}
+                    <li class="{{ category }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+
+    {{ form.signup() }}
 
   </form>
 
