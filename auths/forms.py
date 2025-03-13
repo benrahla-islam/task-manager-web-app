@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField , EmailField , PasswordField , SubmitField , BooleanField , TextAreaField , HiddenField
+from wtforms import StringField , EmailField , PasswordField , SubmitField , BooleanField , TextAreaField , IntegerField , SelectField
 from wtforms.validators import DataRequired ,InputRequired , Email 
 
 class SigninForm(FlaskForm):
@@ -16,18 +16,35 @@ class LoginForm(FlaskForm):
     login = SubmitField('login')
 
 class CreateTaskForm(FlaskForm):
-    id = HiddenField()
+    id = IntegerField()
     title = StringField('Title', validators=[DataRequired()])
     description = TextAreaField('Description')
+    group = SelectField('Group', coerce=int , validators=[] , choices=[] , default= None)
     create_submit = SubmitField('Save')
 
 
 class UpdateTaskForm(FlaskForm):
-    id = HiddenField()
+    id = IntegerField()
     title = StringField('Title', validators=[DataRequired()])
     description = TextAreaField('Description')
-    update_submit = SubmitField('Save')
+    update_submit = SubmitField('update')
 
 class DeleteTaskForm(FlaskForm):
-    id = HiddenField()
-    delete_submit = SubmitField()
+    id = IntegerField()
+    delete_submit = SubmitField("Delete")
+
+class DeleteGroupForm(FlaskForm):
+    id = IntegerField()
+    delete_submit = SubmitField("Delete")
+
+class CreateGroupForm(FlaskForm):
+    id = IntegerField()
+    name = StringField('Name', validators=[DataRequired()])
+    color = StringField('Color', validators=[DataRequired()])
+    create_submit = SubmitField('Create')
+
+class UpdateGroupForm(FlaskForm):
+    id = IntegerField()
+    name = StringField('Name', validators=[DataRequired()])
+    update_submit = SubmitField('Update')
+

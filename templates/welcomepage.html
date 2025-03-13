@@ -2,10 +2,10 @@
     {% block content %}
         <h1>welcome to my task manager</h1>
         <div class="square">
-            <a href="{{ url_for('login') }}">
+            <a href="{{ url_for('auth.login') }}">
                 <button>Log in</button>
             </a>
-            <a href="{{ url_for('signup') }}">
+            <a href="{{ url_for('auth.signup') }}">
                 <button>Sign up</button>
             </a>
         </div>

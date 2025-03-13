@@ -17,6 +17,8 @@ def load_user(user_id):
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('other.userpage'))
     Email = None
     Password = None
     form = LoginForm()
@@ -39,6 +41,9 @@ def login():
 
 @auth_bp.route('/signup' , methods = ['GET' , 'POST'])
 def signup():
+    
+    if current_user.is_authenticated:
+        return redirect(url_for('other.userpage'))
     email = None
     password = None
     name = None

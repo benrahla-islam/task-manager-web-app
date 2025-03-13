@@ -1,0 +1,11 @@
+{% for group in groups %}
+    <p class="task-item" style="border-color: {{ group.color }};">
+        {{ group.name }} ID: {{ group.id }}
+        <form id="delete-group-form-{{ group.id }}" method="post">
+            {{ delete_group_form.hidden_tag() }}
+            <input type="hidden" name="form_name" value="delete_group_form">
+            <input type="hidden" name="delete_group_form-id" value="{{ group.id }}">
+            {{ delete_group_form.delete_submit() }}
+        </form>
+    </p>
+{% endfor %}

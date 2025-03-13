@@ -12,6 +12,9 @@ class User(db.Model , UserMixin):
     username = db.Column("username", db.String(100), nullable = False)
     password = db.Column("password", db.String(100) , nullable = False)
     subscription_type = db.Column("subscription_type", db.Enum('basic','premium','admin') , default = 'basic')
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), 
+                          onupdate=db.func.current_timestamp())
 
     def __init__(self , username , email , password ):
         self.username = username
@@ -46,7 +49,9 @@ class Task(db.Model):
     status = db.Column("status", db.Enum('active','inactive') , default = 'active')
     group_id = db.Column(db.Integer, ForeignKey('group.id'), nullable=True)
     user_id = db.Column(db.Integer , ForeignKey('user.id') , nullable = False)
-
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), 
+                          onupdate=db.func.current_timestamp())
 
     group = db.relationship('Group', backref='tasks')
     user = db.relationship('User', backref='tasks')
@@ -71,9 +76,13 @@ class Group(db.Model):
     name = db.Column("name", db.String(50) , nullable = False)
     color = db.Column("color", db.String(10) , default = 'blue')
     user_id = db.Column(db.Integer , ForeignKey('user.id') , nullable = False)
+    created_at = db.Column(db.DateTime, default=db.func.current_timestamp())
+    updated_at = db.Column(db.DateTime, default=db.func.current_timestamp(), 
+                          onupdate=db.func.current_timestamp())
 
     user = db.relationship('User', backref='groups')
 
-    def __init__(self,name,color = 'blue'):
+    def __init__(self,name,user_id , color = 'blue' ):
         self.name = name 
         self.color = color
+        self.user_id = user_id
